@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: jenkins
+  namespace: argocd
+spec:
+  project: default
+  sources:
+  - chart: "jenkins/jenkins"
+    repoURL: "https://charts.jenkins.io"
+    targetRevision: 5.1.23
+    helm:
+      releaseName: jenkins
+      version: v3
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: jenkins
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
