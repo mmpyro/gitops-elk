@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/mmpyro/gitops-releases.git
+    repoURL: https://github.com/mmpyro/gitops-elk.git
     targetRevision: HEAD
     path: ./applications
     directory:
