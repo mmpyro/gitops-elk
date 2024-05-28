@@ -1,22 +1,22 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: jenkins
+  name: gatekeeper
   namespace: argocd
   labels:
-    app: jenkins
+    app: gatekeeper
 spec:
   project: default
   sources:
-  - chart: "jenkins"
-    repoURL: "https://charts.jenkins.io"
-    targetRevision: 5.1.23
+  - chart: "gatekeeper"
+    repoURL: "https://open-policy-agent.github.io/gatekeeper/charts"
+    targetRevision: 3.16.3
     helm:
-      releaseName: jenkins
+      releaseName: gatekeeper
       version: v3
   destination:
     server: "https://kubernetes.default.svc"
-    namespace: jenkins
+    namespace: gatekeeper-system
   syncPolicy:
     automated:
       prune: true
