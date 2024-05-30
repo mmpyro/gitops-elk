@@ -14,6 +14,14 @@ spec:
     helm:
       releaseName: jenkins
       version: v3
+      values: |
+        controller:
+          installPlugins:
+          - kubernetes:4238.v41b_3ef14a_5d8
+          - workflow-aggregator:596.v8c21c963d92d
+          - git:5.2.2
+          - configuration-as-code:1810.v9b_c30a_249a_4c
+          - blueocean:1.27.12
   destination:
     server: "https://kubernetes.default.svc"
     namespace: jenkins
